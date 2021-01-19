@@ -1,0 +1,18 @@
+     /*  -------------------------------------------------------------------------
+     *  Binary constant macros by Max Yushkov (youshkov@gmail.com)
+     *  Sample usage:
+     *  BIN(10) == 2
+     *  BIN(110011) == 0x33
+     *  BIN(11Q)  Warning(div by 0)
+     */
+  
+  #define BIN_INDEX(size,n) (((size - 2 - n)>=0) ? (size - 2 - n) : 0)
+  #define BIN_IS_BIT(s,n) ( (n<(sizeof(s)-1)) ? ( ((s[BIN_INDEX(sizeof(s),n)]=='1') ? (1<<n) : ((s[BIN_INDEX(sizeof(s),n)]=='0') ? 0 : (1/0) ) ) ) : 0 )
+  #define BIN(b)  ( BIN_IS_BIT(#b,0)  + BIN_IS_BIT(#b,1)  + BIN_IS_BIT(#b,2)  + BIN_IS_BIT(#b,3)  + \
+                    BIN_IS_BIT(#b,4)  + BIN_IS_BIT(#b,5)  + BIN_IS_BIT(#b,6)  + BIN_IS_BIT(#b,7)  + \
+                    BIN_IS_BIT(#b,8)  + BIN_IS_BIT(#b,9)  + BIN_IS_BIT(#b,10) + BIN_IS_BIT(#b,11) + \
+                    BIN_IS_BIT(#b,12) + BIN_IS_BIT(#b,13) + BIN_IS_BIT(#b,14) + BIN_IS_BIT(#b,15) + \
+                    BIN_IS_BIT(#b,16) + BIN_IS_BIT(#b,17) + BIN_IS_BIT(#b,18) + BIN_IS_BIT(#b,19) + \
+                    BIN_IS_BIT(#b,20) + BIN_IS_BIT(#b,21) + BIN_IS_BIT(#b,22) + BIN_IS_BIT(#b,23) + \
+                    BIN_IS_BIT(#b,24) + BIN_IS_BIT(#b,25) + BIN_IS_BIT(#b,26) + BIN_IS_BIT(#b,27) + \
+                    BIN_IS_BIT(#b,28) + BIN_IS_BIT(#b,29) + BIN_IS_BIT(#b,30) + BIN_IS_BIT(#b,31) )
